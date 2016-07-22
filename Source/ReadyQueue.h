@@ -25,7 +25,6 @@ struct Ready_queue
 
 void initialize_ready_queue();
 
-
 void enqueue(struct Thread *thread);
 struct Thread * dequeue();
 

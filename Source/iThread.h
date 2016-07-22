@@ -18,7 +18,11 @@ struct Thread
 	//bool isExit;
 };
 
-void scheduler(struct Thread *previousThread, struct Thread * nextThread);
+struct Thread mainThread;
+
+void set_running_thread(struct Thread * thread);
+void print_running_thread_id();
+void scheduler();
 void create_iThread(struct Thread *thread, void (* start_routine) (void));
 
 

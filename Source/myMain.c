@@ -9,36 +9,47 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "iThread.h"
+#include "ReadyQueue.h"
 
-struct Thread mainThread;
-struct Thread thread1;
-struct Thread thread2;
 void thread_fun();
 
 void thread2_fun()
 {
 	printf("\nThread2 called 1st time\n");
-	scheduler(&thread2, &thread1);
+	//scheduler(&thread2, &thread1);
 	printf("\nThread2 called 2nd time\n");
 }
 
 void thread1_fun()
 {
 	printf("\nThread1 called 1st time\n");
-	scheduler(&thread1, &thread2);
+	//scheduler(&thread1, &thread2);
 	printf("\nThread1 called 2nd time\n");
 	//scheduler(&thread1, &mainThread);
 }
 
 int main()
 {
-	create_iThread(&thread1, thread1_fun);
-	create_iThread(&thread2, thread2_fun);
-	scheduler(&mainThread, &thread1);
+//	create_iThread(&thread1, thread1_fun);
+//	create_iThread(&thread2, thread2_fun);
+//	scheduler(&mainThread, &thread1);
 	//justTest(&mainThread);
 	//myCall();
 
 	// Creating ready Queue Ready Queue
+
+	initialize_ready_queue();
+
+	set_running_thread(&mainThread);
+
+	struct Thread thread1;
+	struct Thread thread2;
+
+	create_iThread(&thread1, thread_fun);
+	create_iThread(&thread2, thread_fun);
+
+	scheduler();
+
 	printf("\nExiting main\n");
 	return 0;
 }
@@ -48,13 +59,10 @@ int main()
 void thread_fun()
 {
 	printf("\nThread called 1st time\n");
-	int k = 0;
-
-	while (1)
+	for (int i = 0; i < 10; i++)
 	{
-
-
-		//scheduler();
+		print_running_thread_id();
+		printf("Thread fun : %d", i);
+		scheduler();
 	}
-
 }

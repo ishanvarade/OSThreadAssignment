@@ -48,6 +48,12 @@ struct Thread * dequeue()
 				ready_queue.number_of_threads;
 
 		--ready_queue.count;
+		if (0 == ready_queue.count)
+		{
+			ready_queue.front_of_queue = -1;
+			ready_queue.end_of_queue = -1;
+		}
+
 		return thread;
 	}
 
