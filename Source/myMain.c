@@ -30,23 +30,23 @@ void thread1_fun()
 
 int main()
 {
-//	create_iThread(&thread1, thread1_fun);
-//	create_iThread(&thread2, thread2_fun);
-//	scheduler(&mainThread, &thread1);
-	//justTest(&mainThread);
-	//myCall();
-
-	// Creating ready Queue Ready Queue
-
 	initialize_ready_queue();
 
 	set_running_thread(&mainThread);
 
-	struct Thread thread1;
-	struct Thread thread2;
+//	struct Thread thread1;
+//	struct Thread thread2;
+//
+//	create_iThread(&thread1, thread_fun);
+//	create_iThread(&thread2, thread_fun);
 
-	create_iThread(&thread1, thread_fun);
-	create_iThread(&thread2, thread_fun);
+	const int n = 3;
+
+	for (int i = 0; i < n; i++)
+	{
+		struct Thread *thread = (struct Thread *)malloc(sizeof (struct Thread));
+		create_iThread(thread, thread_fun);
+	}
 
 	scheduler();
 

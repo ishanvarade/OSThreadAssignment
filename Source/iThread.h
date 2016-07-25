@@ -9,12 +9,21 @@
 #define ITHREAD_H_
 
 
+
 /* Thread Control Block */
 struct Thread
 {
+	enum {
+		ready_status,
+		running_status,
+		block_status,
+		exit_status
+	} status;
 	void *esp;
 	void *eip;
 	void *ebp;
+
+	void *stack;
 	//bool isExit;
 };
 
