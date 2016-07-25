@@ -32,7 +32,7 @@
 	);														\
 }															\
 
-const int STACK_SIZE = 1024;
+const int STACK_SIZE = 1048579; // 1Mb
 struct Thread *running_thread;
 
 void set_running_thread(struct Thread * thread)
@@ -42,7 +42,7 @@ void set_running_thread(struct Thread * thread)
 
 void print_running_thread_id()
 {
-	printf("\n* Thread Running: %p \n", running_thread);
+	printf("* Thread Running: %p ", running_thread);
 }
 
 void exiting_iThread()
@@ -95,32 +95,5 @@ void scheduler()
 
 	switch_to(prev, running_thread);
 
-	/////////////////////////////////////////////////////////
-	/*Saving states*/
-//	if (prev)
-//	{
-//		asm volatile ("movl (%%ebp), %[prev_ebp]	\t\n"
-//				"movl 4(%%ebp), %[prev_eip]		\t\n"
-//				"movl %%ebp, %[prev_esp]	\t\n"
-//				"addl $8, %[prev_esp]	\t\n"
-//				:[prev_esp] "=r" (prev->esp),
-//				 [prev_ebp] "=r" (prev->ebp),
-//				 [prev_eip] "=r" (prev->eip)
-//				 :
-//				 :);
-//	}
-//
-//	/*Loading states*/
-//	asm volatile ("movl %[next_esp], %%ebx	\t\n"
-//			"movl %%ebx, %%esp 		\t\n"
-//			"movl %[next_ebp], %%ebp	\t\n"
-//			"jmp *%[next_eip]"
-//			:
-//			:[next_esp] "r" (next->esp),
-//			 [next_ebp] "r" (next->ebp),
-//			 [next_eip] "r" (next->eip)
-//			 :
-//	);
-	//////////////////////////////////////////////////////////
 	printf("Ishan Varade\n");
 }

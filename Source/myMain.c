@@ -58,8 +58,8 @@ int main()
 
 void thread_fun()
 {
-	printf("\nThread called 1st time\n");
-	for (int i = 0; i < 10; i++)
+	//printf("\nThread called 1st time\n");
+	for (int i = 1; i <= 10; i++)
 	{
 		print_running_thread_id();
 		printf("Thread fun : %d", i);
