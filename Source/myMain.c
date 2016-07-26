@@ -34,17 +34,14 @@ int main()
 
 	set_running_thread(&mainThread);
 
-//	struct Thread thread1;
-//	struct Thread thread2;
-//
-//	create_iThread(&thread1, thread_fun);
-//	create_iThread(&thread2, thread_fun);
+	int number_of_threads;
+	printf("Number of threads to create: ");
+	scanf("%d", &number_of_threads);
 
-	const int n = 3;
-
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < number_of_threads; i++)
 	{
 		struct Thread *thread = (struct Thread *)malloc(sizeof (struct Thread));
+		thread -> tid = i;
 		create_iThread(thread, thread_fun);
 	}
 

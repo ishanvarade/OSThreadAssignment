@@ -22,6 +22,7 @@ struct Thread
 	void *esp;
 	void *eip;
 	void *ebp;
+	int tid;
 
 	void *stack;
 	//bool isExit;

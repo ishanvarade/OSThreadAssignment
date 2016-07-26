@@ -48,7 +48,7 @@ void set_running_thread(struct Thread * thread)
 
 void print_running_thread_id()
 {
-	printf("* Thread Running: %p ", running_thread);
+	printf("* Thread ID: %d ", running_thread -> tid);
 }
 
 void exiting_iThread()
